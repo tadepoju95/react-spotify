@@ -1,0 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body, html {
+	background-color: black;
+	height: 0px;
+	color: white;
+	
+}
+
+.logo {
+	font-family: Oldtown, fantasy;
+	font-size: 80px;
+}
+
+.blog-logo {
+	font-family: Oldtown, fantasy;
+	margin: 10px 0;
+	color: green;
+}
+
+.blog-icon {
+	color: white;
+}
+
+.btn {
+	background-color: #15883E;
+	font-size: 15px;
+	width: 230px;
+	margin: 40px;
+	color: white;
+	border-radius: 30px;
+	padding: 11px;
+}
+
+.logo-button {
+	position: absolute;
+    bottom: 30%;
+    left: 40%;
+}
+
+.trademark {
+	font-size: 12px;
+	margin: 38px 2px;
+}
