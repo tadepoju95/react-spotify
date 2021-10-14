@@ -1,17 +1,35 @@
-import spotifyApi from '../apis/spotifyApi';
+import axios from 'axios';
 
 
-export const spotifyClientCredentials = () => async dispatch => {
-	const response = await spotifyApi.post(
-		'/api/token', {
-			params: {
-				grant_type: "client_credentials"
-			},
+
+export const spotifyClientCredentials = () => dispatch => {
+	axios('https://accounts.spotify.com/api/token', {
+      headers: {
+        'Content-Type' : 'application/x-www-form-urlencoded',
+        'Authorization' : 'Basic ' + process.env.REACT_APP_CLIENT_ID_SECRET      
+      },
+      data: 'grant_type=client_credentials',
+      method: 'POST'
+    })
+    .then(tokenResponse => { 
+      dispatch({ type: 'SPOTIFY_CLIENT_CREDENTIALS', payload: tokenResponse.data});
+    });
+};
+
+
+export const fetchSongs = (term) => async (dispatch, getState) => {
+	const { access_token } = getState().credential;
+	const response = await axios.get('https://api.spotify.com/v1/search', {
 			headers: {
-				"Authorization": "Basic NTdjNjQxNTIzYjg0NDAyMWEzZWNhYzM4ODc4OTcyMjI6ZTNiMmFmYmY0Mzc2NGE2M2IzMDhiYzVhYzJlNzMxMTI=",
-				"Content-Type": "application/x-www-form-urlencoded"
+       			'Content-Type' : 'application/x-www-form-urlencoded',
+        		'Authorization' : 'Bearer ' + access_token    
+      		},
+			params: {
+				q: term,
+				type: 'track'
 			}
 		}
 	)
-	dispatch({ type: 'SPOTIFY_CLIENT_CREDENTIALS', payload: response.data });
+	console.log("response", response.data.tracks.items)
+	dispatch({ type: 'FETCH_SONGS', payload: response.data.tracks.items});
 };

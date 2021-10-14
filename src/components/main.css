@@ -12,37 +12,30 @@ body, html {
 }
 
 .logo {
-	font-family: Oldtown, fantasy;
-	font-size: 80px;
+	font-family: sans-serif, fantasy;
+	font-size: 28px;
 }
 
-.blog-logo {
-	font-family: Oldtown, fantasy;
-	margin: 10px 0;
-	color: green;
+.spotify-logo {
+	margin: 20px 40px;
+	
 }
+
 
 .blog-icon {
 	color: white;
-}
-
-.btn {
-	background-color: #15883E;
-	font-size: 15px;
-	width: 230px;
-	margin: 40px;
-	color: white;
-	border-radius: 30px;
-	padding: 11px;
-}
-
-.logo-button {
-	position: absolute;
-    bottom: 30%;
-    left: 40%;
+	margin: 0px 4px;
+	font-size: 50px;
 }
 
 .trademark {
-	font-size: 12px;
-	margin: 38px 2px;
+	font-size: 5px;
+}
+
+.song-list {
+	color: black;
+	width: 200px;
+	display: inline-block;
+	margin: 20px 10px;
+	cursor:pointer;
 }
