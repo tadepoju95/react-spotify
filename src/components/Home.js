@@ -21,7 +21,7 @@ class Home extends React.Component {
     
     renderForm () {
 		return (
-			<form style={{marginTop:5}} onSubmit={this.onSubmit}>
+			<form onSubmit={this.onSubmit}>
 					<input
 	          value={this.state.term} 
 	          onChange={(e) => this.setState({ term: e.target.value })}
