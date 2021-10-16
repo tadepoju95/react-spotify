@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSongs } from '../actions';
-import { Container, Card} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Card} from 'react-bootstrap'
 
 
 class Songs extends React.Component {

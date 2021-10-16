@@ -18,7 +18,6 @@ body, html {
 
 .spotify-logo {
 	margin: 20px 40px;
-	
 }
 
 
@@ -38,4 +37,9 @@ body, html {
 	display: inline-block;
 	margin: 20px 10px;
 	cursor:pointer;
+}
+
+.form-input {
+	position: relative;
+	top: 8px;
 }

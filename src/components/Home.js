@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FaSpotify, FaSearch } from 'react-icons/fa';
+import { FaSpotify } from 'react-icons/fa';
 import { AiOutlineTrademarkCircle } from 'react-icons/ai'
 import { spotifyClientCredentials, fetchSongs } from '../actions';
 import Songs from './Songs';
 
 
-
 class Home extends React.Component {
-	state = { displayInput: false, term: "" };
+	state = { term: "" };
 
 	componentDidMount() {
 		this.props.spotifyClientCredentials();
@@ -22,14 +21,14 @@ class Home extends React.Component {
     
     renderForm () {
 		return (
-			<form style={{marginTop:5,marginLeft:20}} onSubmit={this.onSubmit}>
-				<input
-          value={this.state.term} 
-          onChange={(e) => this.setState({ term: e.target.value })}
-          type="search" 
-          placeholder="Search songs" 
-          aria-label="Search" 
-        />
+			<form style={{marginTop:5}} onSubmit={this.onSubmit}>
+					<input
+	          value={this.state.term} 
+	          onChange={(e) => this.setState({ term: e.target.value })}
+	          type="search" 
+	          placeholder="Search songs" 
+	          aria-label="Search" 
+	        />
 			</form>
 		)
 	}
@@ -38,14 +37,11 @@ class Home extends React.Component {
 		console.log(this.props.fetchSongs);
 		return (
 			<div>
-				<div className="spotify-logo">
+				<div className="spotify-logo d-flex justify-content-between">
 					<div className="logo"><FaSpotify className="blog-icon" />Spotify<AiOutlineTrademarkCircle className="trademark" /></div>
-					<div className="d-flex justify-content-end">
-						<FaSearch style={{marginTop:-30,marginLeft:20}} onClick={() => this.setState({ displayInput: !this.state.displayInput })} />
-						{this.state.displayInput && this.renderForm()}
-					</div>
-					<hr />
+					<div className="d-flex justify-content-end form-input">{this.renderForm()}</div>
 				</div>
+				<hr />
 				<Songs />
 			</div>
 		)
