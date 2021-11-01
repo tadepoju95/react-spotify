@@ -17,7 +17,7 @@ export const spotifyClientCredentials = () => dispatch => {
 };
 
 
-export const fetchSongs = (term) => async (dispatch, getState) => {
+export const fetchSongs = (term = 'tems') => async (dispatch, getState) => {
 	const { access_token } = getState().credential;
 	const response = await axios.get('https://api.spotify.com/v1/search', {
 			headers: {
