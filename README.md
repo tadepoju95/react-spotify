@@ -10,6 +10,8 @@ Project was built using React, Redux and the Spotify Web API.
 
 ## Learn More
 
+• Obtain Spotify's Web API.
+
 • Clone the app onto your local machine.
 
 • In your terminal, type npm install (installs the required dependencies).
