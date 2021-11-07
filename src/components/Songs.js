@@ -1,19 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchSongs } from '../actions';
+import { spotifyClientCredentials, fetchSongs } from '../actions';
 import { Card} from 'react-bootstrap'
 
 
 class Songs extends React.Component {
 
 	componentDidMount() {
+		this.props.spotifyClientCredentials();
 		this.props.fetchSongs();
 	}
 
-	handleClick() {
-
-	}
-    
+	
     renderList () {
 		return this.props.songs.map((eachSong, index) => {
 			return (
@@ -41,4 +39,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchSongs })(Songs);
+export default connect(mapStateToProps, { spotifyClientCredentials, fetchSongs })(Songs);
