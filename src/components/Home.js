@@ -2,12 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FaSpotify } from 'react-icons/fa';
 import { AiOutlineTrademarkCircle } from 'react-icons/ai'
-import { fetchSongs } from '../actions';
+import { spotifyClientCredentials, fetchSongs } from '../actions';
 import Songs from './Songs';
 
 
 class Home extends React.Component {
 	state = { term: "" };
+
+	componentDidMount() {
+		this.props.spotifyClientCredentials();
+	}
 
 	onSubmit = e => {
 		e.preventDefault();
@@ -46,4 +50,4 @@ class Home extends React.Component {
 
 
 
-export default connect(null, { fetchSongs })(Home);
+export default connect(null, { spotifyClientCredentials, fetchSongs })(Home);
