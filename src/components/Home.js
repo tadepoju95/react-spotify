@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FaSpotify } from 'react-icons/fa';
 import { AiOutlineTrademarkCircle } from 'react-icons/ai'
-import { spotifyClientCredentials, fetchSongs } from '../actions';
+import { fetchSongs } from '../actions';
 import Songs from './Songs';
 
 
 class Home extends React.Component {
 	state = { term: "" };
 
-	componentDidMount() {
-		this.props.spotifyClientCredentials();
-	}
 
 	onSubmit = e => {
 		e.preventDefault();
@@ -34,7 +31,6 @@ class Home extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.fetchSongs);
 		return (
 			<div>
 				<div className="spotify-logo d-flex justify-content-between">
@@ -50,4 +46,4 @@ class Home extends React.Component {
 
 
 
-export default connect(null, { spotifyClientCredentials, fetchSongs })(Home);
+export default connect(null, { fetchSongs })(Home);
