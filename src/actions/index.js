@@ -6,7 +6,7 @@ export const spotifyClientCredentials = () => dispatch => {
 	axios('https://accounts.spotify.com/api/token', {
       headers: {
         'Content-Type' : 'application/x-www-form-urlencoded',
-        'Authorization' : 'Basic ' + process.env.REACT_APP_CLIENT_ID_SECRET      
+        'Authorization' : 'Basic NTdjNjQxNTIzYjg0NDAyMWEzZWNhYzM4ODc4OTcyMjI6ZTNiMmFmYmY0Mzc2NGE2M2IzMDhiYzVhYzJlNzMxMTI'       
       },
       data: 'grant_type=client_credentials',
       method: 'POST'
