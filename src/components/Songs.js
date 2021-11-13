@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { spotifyClientCredentials, fetchSongs } from '../actions';
 import { Card} from 'react-bootstrap'
 
 
-class Songs extends React.Component {
+const Songs = ({songs, credential, spotifyClientCredentials, fetchSongs}) => {
 
-	componentDidMount() {
-		this.props.spotifyClientCredentials();
-		this.props.fetchSongs();
-	}
+	useEffect(() => {
+        if (!credential.access_token) {
+        	spotifyClientCredentials();
+        }
 
-	
-    renderList () {
-		return this.props.songs.map((eachSong, index) => {
+        	fetchSongs();
+
+    }, [spotifyClientCredentials, credential.access_token, fetchSongs])
+
+
+    const renderList = () => {
+		return songs.map((eachSong, index) => {
 			return (
 					<Card key={index} className="song-list pe-auto" style={{ width: '15rem', height: '6rem' }} onClick={() => window.open(eachSong.external_urls.spotify, "_blank")}>
   						<Card.Body>{eachSong.name} - {eachSong.album.artists[0].name}</Card.Body>
@@ -22,19 +26,18 @@ class Songs extends React.Component {
 		});
 	}
 
-	render() {
-		console.log(this.props.songs);
-		return (
+	return (
 			<div>
-				<div className={'d-flex justify-content-center flex-wrap'}>{this.renderList()}</div>
+				<div className={'d-flex justify-content-center flex-wrap'}>{renderList()}</div>
 			</div>
 		)
-	}
+	
 }
 
 const mapStateToProps = state => {
 	return { 
-		songs: state.songs
+		songs: state.songs,
+		credential: state.credential
 	 };
 }
 
